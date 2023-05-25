@@ -1,0 +1,51 @@
+<script src="{{ 'product-bundle-modal.js' | asset_url }}" defer="defer"></script>
+
+<div class="modal-section">
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2>Modalodal Title</h2>
+            <h3>Modalodal Subtitle</h3>
+            <p>Modal content goes here...</p>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Bundle Modal",
+    "settings": [
+        {
+            "type": "checkbox",
+            "label": "Enable",
+            "id": "enable",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "label": "Image",
+            "id": "image"
+        },
+        {
+            "type": "text",
+            "label": "Heading",
+            "id": "heading"
+        },
+        {
+            "type": "text",
+            "label": "Subheading",
+            "id": "subheading"
+        },
+        {
+            "type": "number",
+            "label": "Show Delay (in seconds)",
+            "id": "show_delay",
+            "default": 5
+        },
+        {
+            "type": "checkbox",
+            "label": "Show Only Once Per Customer",
+            "id": "show_once_per_customer"
+        }
+    ]
+}
+{% endschema %}
