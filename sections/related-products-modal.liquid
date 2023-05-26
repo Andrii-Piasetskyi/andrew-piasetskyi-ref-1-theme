@@ -1,4 +1,4 @@
-<script src="{{ 'product-bundle-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'related-products-modal.js' | asset_url }}" defer="defer"></script>
 
 <div class="modal-section">
     <div class="modal-overlay">
@@ -12,7 +12,7 @@
 
 {% schema %}
 {
-    "name": "Product Bundle Modal",
+    "name": "Related Products Modal",
     "settings": [
         {
             "type": "checkbox",
@@ -45,6 +45,35 @@
             "type": "checkbox",
             "label": "Show Only Once Per Customer",
             "id": "show_once_per_customer"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "select",
+            "name": "Add Collection",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "collection-title",
+                    "label": "Collection title"
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "label": "Chose Collection"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection Blocks",
+            "category": "Collection",
+            "blocks": [
+                {
+                    "type": "select"
+                }
+            ]
         }
     ]
 }

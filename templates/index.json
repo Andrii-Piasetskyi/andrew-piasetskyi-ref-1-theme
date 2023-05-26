@@ -66,14 +66,14 @@
         "padding_bottom": 36
       }
     },
-    "product_bundle_modal": {
-      "type": "product-bundle-modal",
+    "related_products_modal": {
+      "type": "related-products-modal",
       "settings": {}
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "product_bundle_modal"
+    "related_products_modal"
   ]
 }
