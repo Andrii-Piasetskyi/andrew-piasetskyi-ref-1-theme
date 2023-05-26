@@ -83,10 +83,11 @@
       "settings": {
         "collection": "related-products-modal",
         "enable": true,
-        "heading": "",
-        "subheading": "",
+        "image": "shopify:\/\/shop_images\/mens-gray-suit-bundle.jpg",
+        "heading": "Get The Look",
+        "subheading": "For Business or Ceremony",
         "show_delay": 5,
-        "show_once_per_customer": false
+        "show_once_per_customer": true
       }
     }
   },
