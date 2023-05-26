@@ -68,7 +68,26 @@
     },
     "related_products_modal": {
       "type": "related-products-modal",
-      "settings": {}
+      "blocks": {
+        "46bd15a0-f260-47eb-a435-a74da7b811b3": {
+          "type": "select",
+          "settings": {
+            "collection-title": "",
+            "collection": "related-products-modal"
+          }
+        }
+      },
+      "block_order": [
+        "46bd15a0-f260-47eb-a435-a74da7b811b3"
+      ],
+      "settings": {
+        "collection": "related-products-modal",
+        "enable": true,
+        "heading": "",
+        "subheading": "",
+        "show_delay": 5,
+        "show_once_per_customer": false
+      }
     }
   },
   "order": [
