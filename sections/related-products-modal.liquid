@@ -1,36 +1,30 @@
 <script src="{{ 'related-products-modal.js' | asset_url }}" defer="defer"></script>
 
-<div class="modal-section">
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <h2>Modalodal Title</h2>
-            <h3>Modalodal Subtitle</h3>
+{% assign image = section.settings.image %}
+{% assign imageSrcSmall = image | img_url: 'small' %}
+{% assign imageSrcMedium = image | img_url: 'medium' %}
+{% assign imageSrcLarge = image | img_url: 'large' %}
 
-            {% for block in section.blocks %}
-                {% if block.type == 'select' %}
-                    {% assign collectionHandle = block.settings.collection %}
+<section id="{{ section.id }}" class="related-products-modal">
+    <div class="related-products-modal__overlay">
+        <div class="related-products-modal__content">
+            <div class="related-products-modal__container">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ imageSrcSmall }}">
+                    <source media="(max-width: 1024px)" srcset="{{ imageSrcMedium }}">
+                    <source media="(min-width: 1025px)" srcset="{{ imageSrcLarge }}">
+                    <img class="related-products-modal__img" src="{{ imageSrcLarge }}" alt="Image">
+                </picture>
+            </div>
+            <div class="related-products-modal__container">
+                <h2 class="related-products-modal__heading">{{ section.settings.heading }}</h2>
+                <h3 class="related-products-modal__subheading">{{ section.settings.subheading }}</h3>
 
-                    {% for collection in collections %}
-                        {% if collection.handle == collectionHandle %}
-                            {% for product in collection.products %}
-                                <div>
-                                    <a href="{{ product.url }}">
-                                        <img
-                                            src="{{ product.featured_image | img_url: 'small' }}"
-                                            alt="{{ product.title }}"
-                                        >
-                                    </a>
-                                    <p>{{ product.sku }}</p>
-                                    <p>{{ product.price | money }}</p>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
+                <button class="related-products-modal__btn">ADD TO CART</button>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 {% schema %}
 {
@@ -77,31 +71,22 @@
     ],
     "blocks": [
         {
-            "type": "select",
-            "name": "Add Collection",
+            "type": "product",
+            "name": "Product",
+            "limit": 2,
             "settings": [
                 {
-                    "type": "text",
-                    "id": "collection-title",
-                    "label": "Collection title"
-                },
-                {
-                    "id": "collection",
-                    "type": "collection",
-                    "label": "Chose Collection"
+                    "type": "product",
+                    "label": "Product",
+                    "id": "product"
                 }
             ]
         }
     ],
     "presets": [
         {
-            "name": "Collection Blocks",
-            "category": "Collection",
-            "blocks": [
-                {
-                    "type": "select"
-                }
-            ]
+            "name": "Related Products Modal",
+            "category": "Custom"
         }
     ]
 }
