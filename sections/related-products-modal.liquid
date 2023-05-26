@@ -5,7 +5,35 @@
         <div class="modal-content">
             <h2>Modalodal Title</h2>
             <h3>Modalodal Subtitle</h3>
-            <p>Modal content goes here...</p>
+            {% for block in section.blocks %}
+                {% assign blockData = block.settings | json %}
+                {{ blockData }}
+            {% endfor %}
+
+            {% for block in section.blocks %}
+                {% if block.type == 'select' %}
+                    {% assign collectionHandle = block.settings.collection %}
+
+                    {% for collection in collections %}
+                        {% if collection.handle == collectionHandle %}
+                            <h4>{{ collection.title }}</h4>
+
+                            {% for product in collection.products %}
+                                <div>
+                                    <a href="{{ product.url }}">
+                                        <img
+                                            src="{{ product.featured_image | img_url: 'small' }}"
+                                            alt="{{ product.title }}"
+                                        >
+                                    </a>
+                                    <p>{{ product.sku }}</p>
+                                    <p>{{ product.price | money }}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -14,6 +42,12 @@
 {
     "name": "Related Products Modal",
     "settings": [
+        {
+            "type": "text",
+            "label": "Collection",
+            "id": "collection",
+            "default": "related-products-modal"
+        },
         {
             "type": "checkbox",
             "label": "Enable",
