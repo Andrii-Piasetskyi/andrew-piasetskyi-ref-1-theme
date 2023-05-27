@@ -8,34 +8,42 @@ class RelatedProductsModal {
             hiddenClass: "hidden",
             overlay: "related-products-modal__overlay",
             actionBtn: "related-products-modal__btn",
+            closeBtn: "related-products-modal__close-btn",
         };
 
         // Check if the modal should be shown only once per customer
-        if (this.showOnlyOncePerCustomer) {
-            const cookieName = "relatedProductsModal";
+        // if (this.showOnlyOncePerCustomer) {
+        //     const cookieName = "relatedProductsModal";
 
-            // Check if the cookie exists
-            if (this.getCookie(cookieName)) {
-                return;
-            }
+        //     // Check if the cookie exists
+        //     if (this.getCookie(cookieName)) {
+        //         return;
+        //     }
 
-            // Set the cookie
-            this.setCookie(cookieName, "true");
-        }
+        //     // Set the cookie
+        //     this.setCookie(cookieName, "true");
+        // }
 
         this.init();
     }
 
     handleEvents() {
-        let overlay = this.element.querySelector(`.${this.classes.overlay}`);
-        let actionBtn = this.element.querySelector(
+        const overlay = this.element.querySelector(`.${this.classes.overlay}`);
+        const actionBtn = this.element.querySelector(
             `.${this.classes.actionBtn}`
+        );
+        const closeBtn = this.element.querySelector(
+            `.${this.classes.closeBtn}`
         );
 
         overlay.addEventListener("click", (e) => {
             if (e.target === overlay) {
-                this.hide(overlay, this.classes.hiddenClass);
+                this.hide(this.element, this.classes.hiddenClass);
             }
+        });
+
+        closeBtn.addEventListener("click", () => {
+            this.hide(this.element, this.classes.hiddenClass);
         });
 
         actionBtn.addEventListener("click", (e) => {
@@ -78,7 +86,7 @@ class RelatedProductsModal {
     }
 
     init() {
-        this.show(this.element, this.classes.hiddenClass, this.showDelay);
+        this.show(this.element, this.classes.hiddenClass, 0);
         this.handleEvents();
     }
 }
