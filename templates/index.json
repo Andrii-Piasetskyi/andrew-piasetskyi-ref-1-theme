@@ -93,7 +93,7 @@
         "heading": "Get The Look",
         "subheading": "For Buisness or Ceremony",
         "show_delay": 5,
-        "show_once_per_customer": false
+        "show_once_per_customer": true
       }
     }
   },
