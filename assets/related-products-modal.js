@@ -9,7 +9,14 @@ class RelatedProductsModal {
             overlay: "related-products-modal__overlay",
             actionBtn: "related-products-modal__btn",
             closeBtn: "related-products-modal__close-btn",
+            item: "related-products-modal__item",
         };
+        this.items = Array.from(
+            this.element.querySelectorAll(`.${this.classes.item}`)
+        ).map((item) => ({
+            id: item.getAttribute("data-id"),
+            quantity: 1,
+        }));
 
         // Check if the modal should be shown only once per customer
         // if (this.showOnlyOncePerCustomer) {
@@ -46,8 +53,8 @@ class RelatedProductsModal {
             this.hide(this.element, this.classes.hiddenClass);
         });
 
-        actionBtn.addEventListener("click", (e) => {
-            console.log("ADD to cart");
+        actionBtn.addEventListener("click", () => {
+            this.addToCart(this.items);
         });
     }
 
@@ -83,6 +90,26 @@ class RelatedProductsModal {
         }
 
         return null;
+    }
+
+    addToCart(items) {
+        let formData = {
+            items: items,
+        };
+
+        fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     }
 
     init() {

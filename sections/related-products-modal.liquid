@@ -26,7 +26,7 @@
                         {% for block in section.blocks %}
                             {% if block.type == 'product' %}
                                 {% assign product = block.settings.product %}
-                                <li class="related-products-modal__item">
+                                <li data-id="{{product.id}}" class="related-products-modal__item">
                                     <a class="related-products-modal__item-link" href="{{ product.url }}"></a>
                                     <img
                                         class="related-products-modal__item-img"
@@ -34,11 +34,14 @@
                                         alt="{{ product.title }}"
                                     >
                                     <div class="related-products-modal__item-info">
-                                        <div class="related-products-modal__item-sku">sku: {{ product.sku }}</div>
+                                        <div class="related-products-modal__item-sku">
+                                            sku: {{ product.selected_or_first_available_variant.sku }}
+                                        </div>
                                         <div class="related-products-modal__item-title">{{ product.title }}</div>
                                         <div class="related-products-modal__item-desc">{{ product.description }}</div>
                                         <div class="related-products-modal__item-price">
                                             {{ product.price | money }}
+                                            <span> {{ product.compare_at_price | money }}</span>
                                         </div>
                                     </div>
                                 </li>
