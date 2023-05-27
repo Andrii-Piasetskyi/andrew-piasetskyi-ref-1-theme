@@ -105,6 +105,7 @@ class RelatedProductsModal {
             body: JSON.stringify(reqData),
         })
             .then((response) => {
+                this.hide(this.element, this.classes.hiddenClass);
                 return response.json();
             })
             .catch((error) => {
