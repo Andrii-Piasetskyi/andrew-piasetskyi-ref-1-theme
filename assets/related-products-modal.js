@@ -18,18 +18,18 @@ class RelatedProductsModal {
             quantity: 1,
         }));
 
-        // Check if the modal should be shown only once per customer
-        // if (this.showOnlyOncePerCustomer) {
-        //     const cookieName = "relatedProductsModal";
+        //Check if the modal should be shown only once per customer
+        if (this.showOnlyOncePerCustomer) {
+            const cookieName = "relatedProductsModal";
 
-        //     // Check if the cookie exists
-        //     if (this.getCookie(cookieName)) {
-        //         return;
-        //     }
+            // Check if the cookie exists
+            if (this.getCookie(cookieName)) {
+                return;
+            }
 
-        //     // Set the cookie
-        //     this.setCookie(cookieName, "true");
-        // }
+            // Set the cookie
+            this.setCookie(cookieName, "true");
+        }
 
         this.init();
     }
@@ -93,7 +93,7 @@ class RelatedProductsModal {
     }
 
     addToCart(items) {
-        let formData = {
+        let reqData = {
             items: items,
         };
 
@@ -102,7 +102,7 @@ class RelatedProductsModal {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(reqData),
         })
             .then((response) => {
                 return response.json();
@@ -113,7 +113,7 @@ class RelatedProductsModal {
     }
 
     init() {
-        this.show(this.element, this.classes.hiddenClass, 0);
+        this.show(this.element, this.classes.hiddenClass, this.showDelay);
         this.handleEvents();
     }
 }
