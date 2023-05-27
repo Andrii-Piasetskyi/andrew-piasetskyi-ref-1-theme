@@ -20,27 +20,26 @@
                 <h2 class="related-products-modal__heading">{{ section.settings.heading }}</h2>
                 <h3 class="related-products-modal__subheading">{{ section.settings.subheading }}</h3>
 
-                {% for block in section.blocks %}
-                    {% if block.type == 'product' %}
-                        {% for product in block.settings.products limit: 2 %}
-                            <ul class="related-products-modal__list">
-                                <li class="related-products-modal__item">
-                                    <a class="related-products-modal__item-link" href="{{ product.url }}">
-                                        <img
-                                            class="related-products-modal__item-img"
-                                            src="{{ product.featured_image | img_url: 'small' }}"
-                                            alt="{{ product.title }}"
-                                        >
-                                        <p class="related-products-modal__item-title">{{ product.title }}</p>
-                                        <p class="related-products-modal__item-sku">{{ product.sku }}</p>
-                                        <p class="related-products-modal__item-desc">{{ product.description }}</p>
-                                        <p class="related-products-modal__item-price">{{ product.price | money }}</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
+                <ul class="related-products-modal__list">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'product' %}
+                            {% assign product = block.settings.product %}
+                            <li class="related-products-modal__item">
+                                <a class="related-products-modal__item-link" href="{{ product.url }}">
+                                    <img
+                                        class="related-products-modal__item-img"
+                                        src="{{ product.featured_image | img_url: 'small' }}"
+                                        alt="{{ product.title }}"
+                                    >
+                                    <p class="related-products-modal__item-title">{{ product.title }}</p>
+                                    <p class="related-products-modal__item-sku">{{ product.sku }}</p>
+                                    <p class="related-products-modal__item-desc">{{ product.description }}</p>
+                                    <p class="related-products-modal__item-price">{{ product.price | money }}</p>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
 
                 <button class="related-products-modal__btn">ADD TO CART</button>
             </div>
