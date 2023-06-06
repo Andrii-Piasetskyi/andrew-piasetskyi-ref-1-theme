@@ -69,23 +69,22 @@
     "57009492-7b25-475b-86a5-43a570a27efe": {
       "type": "related-products-modal",
       "blocks": {
-        "b991bdfe-8178-4260-93f0-90077addfb81": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "mmen-business-dress-shoes"
-          }
-        },
         "5bf3a8f6-9b1b-40c9-bbf8-58484d9e8ee3": {
           "type": "product",
           "settings": {
             "product": "three-piece-regular-fit-suit-in-checked-virgin-wool"
           }
+        },
+        "b991bdfe-8178-4260-93f0-90077addfb81": {
+          "type": "product",
+          "settings": {
+            "product": "mmen-business-dress-shoes"
+          }
         }
       },
       "block_order": [
-        "b991bdfe-8178-4260-93f0-90077addfb81",
-        "5bf3a8f6-9b1b-40c9-bbf8-58484d9e8ee3"
+        "5bf3a8f6-9b1b-40c9-bbf8-58484d9e8ee3",
+        "b991bdfe-8178-4260-93f0-90077addfb81"
       ],
       "settings": {
         "collection": "related-products-modal",
