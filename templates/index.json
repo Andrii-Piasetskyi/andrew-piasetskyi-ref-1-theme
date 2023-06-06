@@ -92,7 +92,7 @@
         "image": "shopify:\/\/shop_images\/mens-gray-suit-bundle.jpg",
         "heading": "Get The Look",
         "subheading": "For Buisness or Ceremony",
-        "show_delay": 1,
+        "show_delay": 5,
         "show_once_per_customer": false
       }
     }
